@@ -6,8 +6,8 @@
   "author": "GambMoli <g.molina@nelmbo.com.co>",
   "license": "MIT",
   "scripts": {
-      "dev": "tsx watch --env-file=.env src/server.ts",
-    "start": "node dist/server.js",
+    "dev": "tsx watch --env-file=.env src/server.ts",
+    "start": "tsx src/server.ts",
     "build": "tsc"
   },
   "dependencies": {
