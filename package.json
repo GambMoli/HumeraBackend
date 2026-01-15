@@ -1,7 +1,7 @@
 {
   "name": "HumeraBackend",
   "version": "1.0.0",
-  "main": "dist/server.js",
+  "main": "index.js",
   "repository": "https://github.com/GambMoli/HumeraBackend.git",
   "author": "GambMoli <g.molina@nelmbo.com.co>",
   "license": "MIT",
