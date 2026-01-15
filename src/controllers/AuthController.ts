@@ -26,11 +26,11 @@ export const register = async (req: Request, res: Response) => {
     );
 
     const user: User = newUser.rows[0];
-    delete user.password;
+    const { password: userPassword, ...userWithoutPassword } = user;
 
     const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '1h' });
 
-    return res.status(201).json({ message: 'User successfully registered', user, token });
+    return res.status(201).json({ message: 'User successfully registered', user: userWithoutPassword, token });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: 'Error registering user' });
@@ -53,9 +53,9 @@ export const login = async (req: Request, res: Response) => {
     }
 
     const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '1h' });
-    delete user.password;
+    const { password: userPassword, ...userWithoutPassword } = user;
 
-    return res.status(200).json({ message: 'Login successful', user, token });
+    return res.status(200).json({ message: 'Login successful', user: userWithoutPassword, token });
   } catch (error) {
     return res.status(500).json({ message: 'Error logging in' });
   }
